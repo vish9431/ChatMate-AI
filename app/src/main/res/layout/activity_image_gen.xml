@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ImageGen">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generate Image now"
+        android:layout_margin="16dp"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/text_view"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:layout_margin="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:minLines="2"
+                android:hint="Write here"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/generate_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Generate"
+            android:textSize="24sp"
+            android:padding="12dp"
+            android:layout_margin="16dp" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:visibility="invisible"
+            android:indeterminateTint="@color/design_default_color_primary"
+            />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_animation_view"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            app:lottie_rawRes="@raw/image"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/prev"
+            android:visibility="visible"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/download_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="24sp"
+            android:text="Download"
+            android:padding="12dp"
+            android:layout_margin="16dp"
+            android:layout_below="@id/image_view" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
