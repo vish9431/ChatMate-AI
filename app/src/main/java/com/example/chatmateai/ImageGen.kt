@@ -35,7 +35,7 @@ class ImageGen : AppCompatActivity() {
     private lateinit var lottieAnimationView: LottieAnimationView
     private lateinit var imageView: ImageView
 
-    val apiKey = "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"
+    val apiKey = ApiKey.API_KEY
     private val JSON = "application/json; charset=utf-8".toMediaType()
     private val client = OkHttpClient()
 

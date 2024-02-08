@@ -30,7 +30,7 @@ class TextGen : AppCompatActivity() {
     private lateinit var messageAdapter: MessageAdapter
 
 
-    val apiKey = "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"
+    val apiKey = ApiKey.API_KEY
 
 
     val JSON = "application/json; charset=utf-8".toMediaType()
