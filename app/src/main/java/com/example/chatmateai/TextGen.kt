@@ -29,9 +29,7 @@ class TextGen : AppCompatActivity() {
     private var messageList: MutableList<Message> = ArrayList()
     private lateinit var messageAdapter: MessageAdapter
 
-
     val apiKey = ApiKey.API_KEY
-
 
     val JSON = "application/json; charset=utf-8".toMediaType()
     val client = OkHttpClient()
@@ -67,7 +65,6 @@ class TextGen : AppCompatActivity() {
         messageList.removeAt(messageList.size - 1)
         addToChat(response, Message.SENT_BY_BOT)
     }
-    
 
     fun callAPI(question: String) {
         // OkHttp
