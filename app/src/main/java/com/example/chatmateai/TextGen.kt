@@ -1,12 +1,17 @@
 package com.example.chatmateai
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import okhttp3.MediaType.Companion.toMediaType
@@ -28,6 +33,7 @@ class TextGen : AppCompatActivity() {
     private lateinit var sendButton: ImageButton
     private var messageList: MutableList<Message> = ArrayList()
     private lateinit var messageAdapter: MessageAdapter
+    private lateinit var backbut : ImageButton
 
     val apiKey = ApiKey.API_KEY
 
@@ -36,6 +42,11 @@ class TextGen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        window.statusBarColor = ContextCompat.getColor(this, R.color.status)
+
+
         setContentView(R.layout.activity_text_gen)
         messageList = ArrayList()
 
@@ -43,6 +54,21 @@ class TextGen : AppCompatActivity() {
         welcomeTextView = findViewById(R.id.welcome_text)
         messageEditText = findViewById(R.id.message_edit_text)
         sendButton = findViewById(R.id.send_btn)
+        backbut = findViewById(R.id.back_btn)
+
+
+        messageEditText.setOnFocusChangeListener{ view, hasFocus ->
+            if (hasFocus) {
+                window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+            }
+        }
+
+        backbut.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+
+        }
 
         // Setup recycler view
         messageAdapter = MessageAdapter(messageList)

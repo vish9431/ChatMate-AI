@@ -34,6 +34,7 @@ class Login : AppCompatActivity() {
             // Navigate to SignUp Screen
             val intent = Intent(this, Signup::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

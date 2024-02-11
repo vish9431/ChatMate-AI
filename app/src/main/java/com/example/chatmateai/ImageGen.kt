@@ -2,11 +2,14 @@ package com.example.chatmateai
 
 import android.content.Context
 import android.content.Context.*
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -34,6 +37,7 @@ class ImageGen : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var lottieAnimationView: LottieAnimationView
     private lateinit var imageView: ImageView
+    private lateinit var backbut : ImageButton
 
     val apiKey = ApiKey.API_KEY
     private val JSON = "application/json; charset=utf-8".toMediaType()
@@ -42,7 +46,6 @@ class ImageGen : AppCompatActivity() {
     companion object {
         val JSON: MediaType = "application/json; charset=utf-8".toMediaType()
     }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +58,7 @@ class ImageGen : AppCompatActivity() {
         progressBar = findViewById(R.id.progress_bar)
         lottieAnimationView = findViewById(R.id.lottie_animation_view)
         imageView = findViewById(R.id.image_view)
+        backbut = findViewById(R.id.back_btn)
 
         lottieAnimationView.cancelAnimation()
         lottieAnimationView.pauseAnimation()
@@ -67,6 +71,12 @@ class ImageGen : AppCompatActivity() {
             } else {
                 textInputLayout.error = "Please enter text"
             }
+        }
+
+        backbut.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }

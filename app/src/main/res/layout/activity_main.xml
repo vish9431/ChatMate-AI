@@ -5,8 +5,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".MainActivity">
+    android:background="@drawable/home"
+    tools:context=".MainActivity"
+    >
+
+    <TextView
+        android:id="@+id/topTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ChatMate AI"
+        android:textSize="32sp"
+        android:textColor="#BD2749"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
 
     <!-- Parent ConstraintLayout -->
@@ -16,7 +32,7 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topTextView"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="16dp">
 
@@ -61,13 +77,14 @@
 
                 <!-- Button -->
                 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/butt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Text Generation"
                     android:textSize="24sp"
                     android:gravity="center"
-                    android:padding="8dp"
+                    android:padding="12dp"
+                    android:backgroundTint="#E3337F"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"/>
             </LinearLayout>
@@ -114,13 +131,14 @@
 
                 <!-- Button -->
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/butt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Image Generation"
                     android:textSize="24sp"
                     android:gravity="center"
-                    android:padding="8dp"
+                    android:padding="12dp"
+                    android:backgroundTint="#E3337F"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"/>
             </LinearLayout>
