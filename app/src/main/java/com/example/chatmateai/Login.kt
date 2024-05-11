@@ -1,6 +1,8 @@
 package com.example.chatmateai
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -14,6 +16,8 @@ class Login : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var progressBar: ProgressBar
+    private lateinit var sharedPreferences: SharedPreferences
+
 
 
 
@@ -24,6 +28,13 @@ class Login : AppCompatActivity() {
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         progressBar = findViewById(R.id.progressbar)
+        sharedPreferences = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
+
+        // Check if the user is already logged in
+        if (sharedPreferences.getBoolean("isLoggedIn", false)) {
+            navigateToMain()
+        }
+
 
         btnLogin.setOnClickListener {
             loginUser()
@@ -36,6 +47,13 @@ class Login : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun navigateToMain() {
+        // Navigate to MainActivity
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun loginUser() {
@@ -56,6 +74,8 @@ class Login : AppCompatActivity() {
                     // Sign in success, updating UI
                     val user: FirebaseUser? = auth.currentUser
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                    sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
+
                     // Navigate to MainActivity
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)

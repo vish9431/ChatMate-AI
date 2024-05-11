@@ -16,10 +16,12 @@ class MainActivity : AppCompatActivity() {
         btntext.setOnClickListener{
             val intent = Intent(this, TextGen::class.java)
             startActivity(intent)
+            finish()
         }
         btnimg.setOnClickListener {
             val intent = Intent(this, ImageGen::class.java)
             startActivity(intent)
+            finish()
         }
 
 
